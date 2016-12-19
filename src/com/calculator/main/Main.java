@@ -1,12 +1,11 @@
 package com.calculator.main;
 
-import com.calculator.window.Window;
+import com.calculator.window.Calculator;
 
 public class Main {
 
   public static void main(String[] args) {
-    Window window = new Window();
-    window.setUpWindow();
+    Calculator calculator = new Calculator();
   }
 
 }
