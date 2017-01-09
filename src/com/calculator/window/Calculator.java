@@ -20,20 +20,20 @@ public class Calculator {
   private RightPanel rightPanel;
   private BottomPanel bottomPanel;
   private LeftPanel leftPanel;
-  public static DefaultListModel<String> list = new DefaultListModel<String>();
+  private DefaultListModel<String> resultList = new DefaultListModel<String>();
 
-  public static FormulaTextField formula;
-
-  public static int topPanelWidth;
+  private FormulaTextField formula;
 
   public Calculator() {
     frame = new JFrame();
-    digitsPanel = new DigitsPanel();
-    rightPanel = new RightPanel();
-    bottomPanel = new BottomPanel();
+
+    formula = new FormulaTextField();
+    digitsPanel = new DigitsPanel(formula);
+    rightPanel = new RightPanel(formula);
+    bottomPanel = new BottomPanel(formula, resultList);
     topPanel = new TopPanel();
 
-    leftPanel = new LeftPanel();
+    leftPanel = new LeftPanel(formula, resultList);
 
     frame.getContentPane().add(BorderLayout.CENTER, digitsPanel);
     frame.getContentPane().add(BorderLayout.NORTH, topPanel);
@@ -46,15 +46,7 @@ public class Calculator {
     frame.setTitle("Calculator");
     frame.setResizable(false);
 
-    topPanelWidth = topPanel.getWidth();
-    formula = new FormulaTextField();
     topPanel.add(formula);
-
-    System.out.println(topPanelWidth);
-  }
-
-  public int getFrameWidth() {
-    return frame.getWidth();
   }
 
 }

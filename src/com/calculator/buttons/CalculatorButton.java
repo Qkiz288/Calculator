@@ -3,12 +3,10 @@ package com.calculator.buttons;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import com.calculator.window.Calculator;
+import com.calculator.textfields.FormulaTextField;
 
 public class CalculatorButton extends JButton {
 
@@ -17,25 +15,18 @@ public class CalculatorButton extends JButton {
   private final String fontName = "Helvetica";
   private final Font buttonFont = new Font(fontName, Font.BOLD, fontSize);
   private final Dimension buttonSize = new Dimension(45, 45);
+  FormulaTextField formula;
 
-  public CalculatorButton() {
-
-  }
-
-  public CalculatorButton(final String label) {
-
+  public CalculatorButton(FormulaTextField formula, String label) {
     super(label);
+    setFormula(formula);
     setFont(buttonFont);
     setBackground(Color.GREEN);
     setPreferredSize(buttonSize);
   }
 
-  public class CharacterListener implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent event) {
-
-      String buttonPressed = event.getActionCommand();
-      Calculator.formula.setText(Calculator.formula.getText() + buttonPressed);
-    }
+  void setFormula(FormulaTextField formula) {
+    this.formula = formula;
   }
+
 }

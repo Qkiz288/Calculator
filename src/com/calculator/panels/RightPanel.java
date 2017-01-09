@@ -3,32 +3,29 @@ package com.calculator.panels;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import com.calculator.buttons.CalculatorButton;
-import com.calculator.buttons.CalculatorButton.CharacterListener;
-import com.calculator.window.Calculator;
+import com.calculator.buttons.ClearButton;
+import com.calculator.buttons.KeyButton;
+import com.calculator.textfields.FormulaTextField;
 
 public class RightPanel extends JPanel {
 
   private static final long serialVersionUID = 1L;
-  private CalculatorButton addition, subtraction, multiplication, division, clear, leftParenthesis, rightParenthesis;
-  CalculatorButton button = new CalculatorButton();
-  CharacterListener characterListener = button.new CharacterListener();
-  ClearListener clearListener = new ClearListener();
+  private KeyButton addition, subtraction, multiplication, division, leftParenthesis, rightParenthesis;
+  private ClearButton clear;
 
-  public RightPanel() {
-    addition = new CalculatorButton("+");
-    subtraction = new CalculatorButton("-");
-    multiplication = new CalculatorButton("*");
-    division = new CalculatorButton("/");
-    clear = new CalculatorButton("C");
-    leftParenthesis = new CalculatorButton("(");
-    rightParenthesis = new CalculatorButton(")");
+  public RightPanel(FormulaTextField formula) {
+    super();
+    addition = new KeyButton(formula, "+");
+    subtraction = new KeyButton(formula, "-");
+    multiplication = new KeyButton(formula, "*");
+    division = new KeyButton(formula, "/");
+    clear = new ClearButton(formula, "C");
+    leftParenthesis = new KeyButton(formula, "(");
+    rightParenthesis = new KeyButton(formula, ")");
 
     GridLayout rightPanelLayout = new GridLayout(4, 3, 10, 10);
 
@@ -44,20 +41,6 @@ public class RightPanel extends JPanel {
     add(division);
     add(leftParenthesis);
     add(rightParenthesis);
-
-    addition.addActionListener(characterListener);
-    subtraction.addActionListener(characterListener);
-    multiplication.addActionListener(characterListener);
-    division.addActionListener(characterListener);
-    clear.addActionListener(clearListener);
-    leftParenthesis.addActionListener(characterListener);
-    rightParenthesis.addActionListener(characterListener);
   }
 
-  class ClearListener implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent event) {
-      Calculator.formula.setText("");
-    }
-  }
 }
