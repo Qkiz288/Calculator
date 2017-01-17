@@ -13,7 +13,7 @@ public class ResultScrollPane extends JScrollPane {
 
   public ResultScrollPane(ResultList list) {
     super(list);
-    setPreferredSize(new Dimension(125, 175));
+    setPreferredSize(new Dimension(220, 143));
     createVerticalScrollBar();
     createHorizontalScrollBar();
     getVerticalScrollBar().setBackground(Color.BLACK);

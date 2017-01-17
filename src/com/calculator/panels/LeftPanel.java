@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 
+import com.calculator.buttons.IOButton;
 import com.calculator.textfields.FormulaTextField;
 import com.calculator.textfields.ResultList;
 import com.calculator.window.ResultScrollPane;
@@ -19,6 +20,7 @@ public class LeftPanel extends JPanel {
   private ResultList resultJList;
   private FormulaTextField formula;
   private ResultScrollPane scroller;
+  private IOButton saveButton, loadButton;
 
   public LeftPanel(FormulaTextField formula, DefaultListModel<String> resultList) {
     super();
@@ -26,10 +28,15 @@ public class LeftPanel extends JPanel {
     setJListWithResults(resultList);
     setBorder(BorderFactory.createEmptyBorder(10, 5, 5, 10));
     setBackground(Color.BLACK);
-    setPreferredSize(new Dimension(150, 200));
+    setPreferredSize(new Dimension(250, 200));
 
     scroller = new ResultScrollPane(resultJList);
+    saveButton = new IOButton("Save", resultJList);
+    loadButton = new IOButton("Load", resultJList);
+
     this.add(scroller);
+    this.add(saveButton);
+    this.add(loadButton);
 
     resultJList.addMouseListener(new ResultListListener());
   }

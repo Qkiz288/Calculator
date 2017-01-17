@@ -2,12 +2,13 @@ package com.calculator.textfields;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.Serializable;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
-public class ResultList extends JList<String> {
+public class ResultList extends JList<String> implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private final int fontSize = 12;
@@ -22,10 +23,6 @@ public class ResultList extends JList<String> {
     setFont(font);
     setBackground(Color.BLACK);
     setForeground(Color.GREEN);
-
-    // JScrollPane scroller = new JScrollPane(this);
-    // scroller.setPreferredSize(new Dimension(250, 80));
-
   }
 
 }

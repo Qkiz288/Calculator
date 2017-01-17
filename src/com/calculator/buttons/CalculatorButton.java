@@ -17,16 +17,25 @@ public class CalculatorButton extends JButton {
   private final Dimension buttonSize = new Dimension(45, 45);
   FormulaTextField formula;
 
+  public CalculatorButton(String label) {
+    super(label);
+    setAppearance(buttonFont, Color.GREEN, buttonSize);
+  }
+
   public CalculatorButton(FormulaTextField formula, String label) {
     super(label);
     setFormula(formula);
-    setFont(buttonFont);
-    setBackground(Color.GREEN);
-    setPreferredSize(buttonSize);
+    setAppearance(buttonFont, Color.GREEN, buttonSize);
   }
 
   void setFormula(FormulaTextField formula) {
     this.formula = formula;
+  }
+
+  void setAppearance(Font font, Color color, Dimension buttonSize) {
+    setFont(font);
+    setBackground(color);
+    setPreferredSize(buttonSize);
   }
 
 }
