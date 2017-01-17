@@ -20,7 +20,13 @@ public class BackspaceButton extends CalculatorButton {
     public void actionPerformed(ActionEvent event) {
       try {
         String formulaString = formula.getText();
-        String updatedFormula = formulaString.substring(0, formulaString.length() - 1);
+        String updatedFormula;
+        if ("Invalid formula".equalsIgnoreCase(formulaString)) {
+          updatedFormula = "";
+        } else {
+          updatedFormula = formulaString.substring(0, formulaString.length() - 1);
+        }
+
         formula.setText(updatedFormula);
       } catch (StringIndexOutOfBoundsException e) {
         e.printStackTrace();
