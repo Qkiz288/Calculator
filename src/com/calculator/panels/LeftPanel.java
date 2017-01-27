@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 
 import com.calculator.buttons.IOButton;
+import com.calculator.buttons.SaveButton;
 import com.calculator.textfields.FormulaTextField;
 import com.calculator.textfields.ResultList;
 import com.calculator.window.ResultScrollPane;
@@ -20,7 +21,8 @@ public class LeftPanel extends JPanel {
   private ResultList resultJList;
   private FormulaTextField formula;
   private ResultScrollPane scroller;
-  private IOButton saveButton, loadButton;
+  private IOButton loadButton;
+  private SaveButton saveButton;
 
   public LeftPanel(FormulaTextField formula, DefaultListModel<String> resultList) {
     super();
@@ -31,7 +33,7 @@ public class LeftPanel extends JPanel {
     setPreferredSize(new Dimension(250, 200));
 
     scroller = new ResultScrollPane(resultJList);
-    saveButton = new IOButton("Save", resultJList);
+    saveButton = new SaveButton("Save", resultJList);
     loadButton = new IOButton("Load", resultJList);
 
     this.add(scroller);

@@ -20,7 +20,7 @@ public class Calculator {
   private RightPanel rightPanel;
   private BottomPanel bottomPanel;
   private LeftPanel leftPanel;
-  private DefaultListModel<String> resultList = new DefaultListModel<String>();
+  private DefaultListModel<String> defaultResultList = new DefaultListModel<String>();
 
   private FormulaTextField formula;
 
@@ -30,10 +30,10 @@ public class Calculator {
     formula = new FormulaTextField();
     digitsPanel = new DigitsPanel(formula);
     rightPanel = new RightPanel(formula);
-    bottomPanel = new BottomPanel(formula, resultList);
+    bottomPanel = new BottomPanel(formula, defaultResultList);
     topPanel = new TopPanel();
 
-    leftPanel = new LeftPanel(formula, resultList);
+    leftPanel = new LeftPanel(formula, defaultResultList);
 
     frame.getContentPane().add(BorderLayout.CENTER, digitsPanel);
     frame.getContentPane().add(BorderLayout.NORTH, topPanel);
